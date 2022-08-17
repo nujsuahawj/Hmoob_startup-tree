@@ -79,11 +79,11 @@
         <div class="row">
             <div class="col-lg-8 col-12">
                 <div class="form-group  @if ($errors->has('address.email')) has-error @endif">
-                    <input type="text" name="address[email]" id="address_email" placeholder="{{ __('Email') }}" class="form-control address-control-item checkout-input" value="{{ old('address.email', Arr::get($sessionCheckoutData, 'email')) }}">
+                    <input type="hidden" name="address[email]" id="address_email" placeholder="{{ __('Email') }}" class="form-control address-control-item checkout-input" value="customer@gmail.com">
                     {!! Form::error('address.email', $errors) !!}
                 </div>
             </div>
-            <div class="col-lg-4 col-12">
+            <div class="col-lg-12 col-12">
                 <div class="form-group  @if ($errors->has('address.phone')) has-error @endif">
                     <input type="text" name="address[phone]" id="address_phone" placeholder="{{ __('Phone') }}" class="form-control address-control-item checkout-input" value="{{ old('address.phone', Arr::get($sessionCheckoutData, 'phone')) }}">
                     {!! Form::error('address.phone', $errors) !!}
@@ -92,7 +92,7 @@
         </div>
 
         <div class="row">
-            {{--  @if (count(EcommerceHelper::getAvailableCountries()) > 1)
+             {{-- @if (count(EcommerceHelper::getAvailableCountries()) > 1)
                 <div class="col-12">
                     <div class="form-group @if ($errors->has('address.country')) has-error @endif">
                         <div class="select--arrow">
@@ -112,14 +112,13 @@
 
             <div class="col-sm-6 col-12">
                 <div class="form-group @if ($errors->has('address.state')) has-error @endif">
-                    <input id="address_state" type="text" class="form-control address-control-item checkout-input" placeholder="{{ __('State') }}" name="address[state]" value="{{ old('address.state', Arr::get($sessionCheckoutData, 'state')) }}">
+                    <input id="address_state" type="hidden" class="form-control address-control-item checkout-input" placeholder="{{ __('State') }}" name="address[state]" value="state">
                     {!! Form::error('address.state', $errors) !!}
                 </div>
             </div>
-
             <div class="col-sm-6 col-12">
                 <div class="form-group  @if ($errors->has('address.city')) has-error @endif">
-                    <input id="address_city" type="text" class="form-control address-control-item checkout-input" placeholder="{{ __('City') }}" name="address[city]" value="{{ old('address.city', Arr::get($sessionCheckoutData, 'city')) }}">
+                    <input id="address_city" type="hidden" class="form-control address-control-item checkout-input" placeholder="{{ __('City') }}" name="address[city]" value="city">
                     {!! Form::error('address.city', $errors) !!}
                 </div>
             </div>
@@ -131,10 +130,25 @@
                 </div>
             </div>
 
+            <div class="col-12">
+                <div class="form-group">
+                    <div class="select--arrow">
+                        <select name="address[country]" class="form-control address-control-item" id="address_country">
+                            <option selected>ເລືອການສົ່ງ</option>
+                            <option value="ans">ອານຸສິດ</option>
+                            <option value="hal">ຮຸ່ງອາລຸນ</option>
+                            <option value="ms">ມີໄຊ</option>
+                            <option value="ms">ມີໄຊ</option>
+                        </select>
+                        <i class="fas fa-angle-down"></i>
+                    </div>
+                </div>
+            </div>
+
             @if (EcommerceHelper::isZipCodeEnabled())
                 <div class="col-12">
                     <div class="form-group @if ($errors->has('address.zip_code')) has-error @endif">
-                        <input id="address_zip_code" type="text" class="form-control address-control-item checkout-input" placeholder="{{ __('Zip code') }}" name="address[zip_code]" value="{{ old('address.zip_code', Arr::get($sessionCheckoutData, 'zip_code')) }}">
+                        <input id="address_zip_code" type="hidden" class="form-control address-control-item checkout-input" placeholder="{{ __('Zip code') }}" name="address[zip_code]" value="{{ old('address.zip_code', Arr::get($sessionCheckoutData, 'zip_code')) }}">
                         {!! Form::error('address.zip_code', $errors) !!}
                     </div>
                 </div>
